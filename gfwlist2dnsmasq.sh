@@ -1,8 +1,7 @@
 #!/bin/sh
 #
-# Author: zhangzf
-# Created Time: 2016.12.06
-# Generate a list of dnsmasq rules with ipset for gfwlist
+# Created Time: 2016.12.06 zhangzf
+# Translate the gfwlist in base64 to dnsmasq rules with ipset
 #
 
 MYDNSIP='127.0.0.1'
@@ -58,5 +57,3 @@ $BASE64 -d $GFWLIST_TMP \
 cp $GFWLIST_D_TMP ./dnsmasq_gfwlist.conf -f
 
 rm $GFWLIST_D_TMP -f
-
-exit 0
