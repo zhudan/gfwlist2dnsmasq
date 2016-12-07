@@ -58,3 +58,5 @@ $BASE64 -d $GFWLIST_TMP \
 cp $GFWLIST_D_TMP ./dnsmasq_gfwlist.conf -f
 
 rm $GFWLIST_D_TMP -f
+
+exit 0
