@@ -79,4 +79,5 @@ case $ACTION in
 		del
 		;;
 	*)
-	ec	ho "暂不支持该命令"
+		echo "暂不支持该命令"
+		;;
