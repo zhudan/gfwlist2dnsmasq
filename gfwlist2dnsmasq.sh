@@ -54,6 +54,7 @@ $BASE64 -d $GFWLIST_TMP \
 	| sort -u \
 	| c_conf
 
+echo "done"
 # cp $GFWLIST_D_TMP ./dnsmasq_gfwlist.conf -f
 
 # rm $GFWLIST_D_TMP -f
