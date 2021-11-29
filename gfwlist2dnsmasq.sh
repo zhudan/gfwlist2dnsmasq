@@ -72,10 +72,10 @@ del(){
 }
 
 case $ACTION in
-	gen)
+	gen*)
 		gen
 		;;
-	del)
+	del*)
 		del
 		;;
 	*)
