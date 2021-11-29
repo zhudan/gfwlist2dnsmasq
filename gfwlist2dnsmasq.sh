@@ -61,6 +61,6 @@ $BASE64 -d $GFWLIST_TMP_BASE64 \
 
 rm $GFWLIST_TMP_BASE64 -f
 echo "更新GFW规则完毕"
-ln -s $GFWLIST_TMP /jffs/configs/dnsmasq.d/gfw.conf
+ln -snf $GFWLIST_TMP /jffs/configs/dnsmasq.d/gfw.conf
 echo "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发gfw域名到上游dns"
 
