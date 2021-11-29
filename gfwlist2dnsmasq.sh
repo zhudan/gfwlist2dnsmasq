@@ -10,12 +10,14 @@ MYDNSPORT='23453'
 
 GFWURL="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
 GFWLIST_TMP_BASE64="/tmp/gfwlist.txt.base64"
-GFWLIST_TMP="/tmp/gfwlist.txt"
+GFWLIST_TMP="/tmp/gfw.conf"
 
 # curl & base64 command path
 CURL=$(which curl)
 CURLOPT="-s -k -o $GFWLIST_TMP_BASE64"
 BASE64=$(which base64)
+
+echo "开始刷新gfw规则，过程可能较慢，请耐心等待"
 
 c_conf() {
 	echo "# Updated on $(date '+%F %T')" >$GFWLIST_TMP
@@ -56,4 +58,6 @@ $BASE64 -d $GFWLIST_TMP_BASE64 \
 
 rm $GFWLIST_TMP_BASE64 -f
 echo "更新GFW规则完毕"
+ln -s $GFWLIST_TMP /jffs/configs/dnsmasq.d/gfw.conf
+echo "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发gfw域名到上游dns"
 
