@@ -9,18 +9,18 @@ MYDNSPORT='23453'
 # IPSETNAME='gfwlist'
 
 GFWURL="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
-GFWLIST_TMP="/tmp/gfwlist.txt.base64"
-GFWLIST_D_TMP="/tmp/gfwlist.txt"
+GFWLIST_TMP_BASE64="/tmp/gfwlist.txt.base64"
+GFWLIST_TMP="/tmp/gfwlist.txt"
 
 # curl & base64 command path
 CURL=$(which curl)
-CURLOPT="-s -k -o $GFWLIST_TMP"
+CURLOPT="-s -k -o $GFWLIST_TMP_BASE64"
 BASE64=$(which base64)
 
 c_conf() {
-	echo "# Updated on $(date '+%F %T')" >$GFWLIST_D_TMP
+	echo "# Updated on $(date '+%F %T')" >$GFWLIST_TMP
 	
-	cat <<-EOF >>$GFWLIST_D_TMP
+	cat <<-EOF >>$GFWLIST_TMP
 	$(while read LINE; do \
 		printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
 # 		printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
@@ -29,7 +29,7 @@ EOF
 }
 
 # download
-if [ ! -f $GFWLIST_TMP ]; then
+if [ ! -f $GFWLIST_TMP_BASE64 ]; then
 	$CURL $CURLOPT $GFWURL
 	[ "$?" -eq 0 ] || {
 		echo "Gfwlist download failed."
@@ -38,7 +38,7 @@ if [ ! -f $GFWLIST_TMP ]; then
 fi
 
 # parse gfwlist	
-$BASE64 -d $GFWLIST_TMP \
+$BASE64 -d $GFWLIST_TMP_BASE64 \
 	| grep -v \
 		-e '^\s*$' \
 		-e '^[\[!@@]' \
@@ -54,7 +54,6 @@ $BASE64 -d $GFWLIST_TMP \
 	| sort -u \
 	| c_conf
 
-echo "done"
-# cp $GFWLIST_D_TMP ./dnsmasq_gfwlist.conf -f
+rm $GFWLIST_TMP_BASE64 -f
+echo "更新GFW规则完毕"
 
-# rm $GFWLIST_D_TMP -f
