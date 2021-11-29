@@ -13,7 +13,7 @@ MYDNSIP='127.0.0.1'
 MYDNSPORT=$3
 # IPSETNAME='gfwlist'
 
-GFWURL="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
+GFWURL="https://gitlab.com/gfwlist/gfwlist/raw/master/gfwlist.txt"
 GFWLIST_TMP_BASE64="/tmp/gfwlist.txt.base64"
 GFWLIST_TMP="/tmp/gfw.conf"
 DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
