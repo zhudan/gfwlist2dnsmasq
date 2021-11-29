@@ -80,6 +80,6 @@ case $command in
 		del
 		;;
 	(*)
-		echo "暂不支持该命令${$ACTION}，只支持gen、del"
+		echo "暂不支持该命令${command}，只支持gen、del"
 		;;
 esac
