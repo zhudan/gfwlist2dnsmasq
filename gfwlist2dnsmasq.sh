@@ -71,11 +71,12 @@ del(){
 	rm -rf $GFWLIST_TMP;
 }
 
-case $ACTION in
-	-gen)
+command=$1
+case $command in
+	(gen)
 		gen
 		;;
-	-del)
+	(del)
 		del
 		;;
 	*)
