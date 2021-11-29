@@ -81,3 +81,4 @@ case $ACTION in
 	*)
 		echo "暂不支持该命令"
 		;;
+esac
