@@ -72,12 +72,13 @@ del(){
 }
 
 case $ACTION in
-	gen*)
+	-gen)
 		gen
 		;;
-	del*)
+	-del)
 		del
 		;;
 	*)
 		echo "暂不支持该命令${$ACTION}，只支持gen、del"
+		;;
 esac
