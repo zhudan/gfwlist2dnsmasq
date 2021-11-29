@@ -64,7 +64,7 @@ gen(){
 	rm $GFWLIST_TMP_BASE64 -f
 	echo_date "更新GFW规则完毕" >> $LOG_FILE
 	ln -snf $GFWLIST_TMP $DNSMASQ_GFW
-	echo_date "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发GFW域名到上游DNS" >> $LOG_FILE
+	echo_date "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发GFW域名到指定DNS" >> $LOG_FILE
 }
 
 #删除dns
