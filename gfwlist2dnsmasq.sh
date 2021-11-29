@@ -33,7 +33,7 @@ EOF
 }
 
 gen(){
-	echo "开始刷新gfw规则，过程可能较慢，请耐心等待"
+	echo_date "开始刷新gfw规则，过程可能较慢，请耐心等待" >> $LOG_FILE
 	# download
 	if [ ! -f $GFWLIST_TMP_BASE64 ]; then
 		$CURL $CURLOPT $GFWURL
@@ -60,9 +60,9 @@ gen(){
 		| c_conf
 
 	rm $GFWLIST_TMP_BASE64 -f
-	echo "更新GFW规则完毕"
+	echo_date "更新GFW规则完毕" >> $LOG_FILE
 	ln -snf $GFWLIST_TMP $DNSMASQ_GFW
-	echo "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发GFW域名到上游DNS"
+	echo_date "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发GFW域名到上游DNS" >> $LOG_FILE
 }
 
 #删除dns
@@ -80,6 +80,6 @@ case $command in
 		del
 		;;
 	(*)
-		echo "暂不支持该命令${command}，只支持gen、del"
+		echo_date "暂不支持该命令${command}，只支持gen、del" >> $LOG_FILE
 		;;
 esac
