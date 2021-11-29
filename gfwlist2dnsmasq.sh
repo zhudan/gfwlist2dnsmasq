@@ -9,8 +9,8 @@ MYDNSPORT='23453'
 # IPSETNAME='gfwlist'
 
 GFWURL="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
-GFWLIST_TMP="/tmp/gfwlist.txt"
-GFWLIST_D_TMP=$(mktemp)
+GFWLIST_TMP="/tmp/gfwlist.txt.base64"
+GFWLIST_D_TMP="/tmp/gfwlist.txt"
 
 # curl & base64 command path
 CURL=$(which curl)
