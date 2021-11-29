@@ -6,6 +6,8 @@
 # Created Time: 2016.12.06 zhangzf
 # Translate the gfwlist in base64 to dnsmasq rules with ipset
 #
+alias echo_date='echo 【$(date +%Y年%m月%d日\ %X)】:'
+LOG_FILE=/tmp/upload/merlinclash_log.txt
 
 MYDNSIP='127.0.0.1'
 MYDNSPORT=$3
