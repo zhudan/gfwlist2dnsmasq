@@ -5,8 +5,8 @@
 #
 
 MYDNSIP='127.0.0.1'
-MYDNSPORT='5353'
-IPSETNAME='gfwlist'
+MYDNSPORT='23453'
+# IPSETNAME='gfwlist'
 
 GFWURL="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
 GFWLIST_TMP="/tmp/gfwlist.txt"
@@ -23,7 +23,7 @@ c_conf() {
 	cat <<-EOF >>$GFWLIST_D_TMP
 	$(while read LINE; do \
 		printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
-		printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
+# 		printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
 	done)
 EOF
 }
@@ -54,6 +54,6 @@ $BASE64 -d $GFWLIST_TMP \
 	| sort -u \
 	| c_conf
 
-cp $GFWLIST_D_TMP ./dnsmasq_gfwlist.conf -f
+# cp $GFWLIST_D_TMP ./dnsmasq_gfwlist.conf -f
 
-rm $GFWLIST_D_TMP -f
+# rm $GFWLIST_D_TMP -f
