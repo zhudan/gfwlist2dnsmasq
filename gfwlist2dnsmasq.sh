@@ -79,6 +79,5 @@ case $ACTION in
 		del
 		;;
 	*)
-		echo "暂不支持该命令"
-		;;
+		echo "暂不支持该命令，只支持gen、del"
 esac
