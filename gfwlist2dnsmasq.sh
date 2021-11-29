@@ -72,11 +72,11 @@ del(){
 }
 
 case $ACTION in
-    gen)
-        gen
-        ;;
-    del)
-        del
-        ;;
-    *)
-        echo "暂不支持该命令"
+  gen)
+      gen
+      ;;
+  del)
+      del
+      ;;
+  *)
+      echo "暂不支持该命令"
