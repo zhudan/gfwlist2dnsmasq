@@ -8,7 +8,7 @@
 #
 
 MYDNSIP='127.0.0.1'
-MYDNSPORT=$2
+MYDNSPORT=$3
 # IPSETNAME='gfwlist'
 
 GFWURL="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"
