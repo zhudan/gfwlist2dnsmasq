@@ -1,5 +1,8 @@
 #!/bin/sh
 #
+# Update Time 2021.11.29 zhudan
+# rm ipset too support clash dns
+#
 # Created Time: 2016.12.06 zhangzf
 # Translate the gfwlist in base64 to dnsmasq rules with ipset
 #
