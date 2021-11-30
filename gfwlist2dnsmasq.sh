@@ -22,7 +22,7 @@ DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
 # curl & base64 command path
 CURL=$(which curl)
 CURLOPT="-s -k -o $GFWLIST_TMP_BASE64"
-BASE64=$(which base64)
+# BASE64=$(which base64)
 
 c_conf() {
 	echo "# Updated on $(date '+%F %T')" >$GFWLIST_TMP
@@ -36,7 +36,7 @@ EOF
 }
 
 gen(){
-	echo_date "开始刷新gfw规则，过程可能较慢，请耐心等待" >> $LOG_FILE
+	echo_date "开始下载GFW规则，过程可能较慢，请耐心等待" >> $LOG_FILE
 	# download
 	if [ ! -f $GFWLIST_TMP_BASE64 ]; then
 		$CURL $CURLOPT $GFWURL
