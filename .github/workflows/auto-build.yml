@@ -32,5 +32,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          curl -s "$update_dnsmasq_clash_sh" -m 10 --connect-timeout 10 | bash -s gen 127.0.0.1 23453 gfwlist
+          cat /tmp/gfw.conf
