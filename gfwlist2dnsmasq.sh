@@ -9,9 +9,9 @@
 alias echo_date='echo 【$(date +%Y年%m月%d日\ %X)】:'
 LOG_FILE=/tmp/upload/merlinclash_log.txt
 
-MYDNSIP='127.0.0.1'
+MYDNSIP=$2
 MYDNSPORT=$3
-IPSETNAME='gfwlist'
+IPSETNAME=$4
 
 # GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt"
 GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
