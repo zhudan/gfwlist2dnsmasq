@@ -34,7 +34,7 @@ EOF
 }
 
 gen(){
-	echo_date "开始下载GFW规则，过程可能较慢，请耐心等待"
+	echo "开始下载GFW规则，过程可能较慢，请耐心等待"
 	# download
 	if [ ! -f $GFWLIST_TMP_BASE64 ]; then
 		$CURL $CURLOPT $GFWURL
