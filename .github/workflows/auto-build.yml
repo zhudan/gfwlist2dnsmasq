@@ -43,5 +43,5 @@ jobs:
           git checkout -b hidden
           git add .
           git commit -m "release"
-          git remote add publish "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/gfwlist2dnsmasq.git"
+          git remote add publish "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f hidden hidden
