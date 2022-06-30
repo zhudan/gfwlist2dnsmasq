@@ -13,10 +13,10 @@ add_telegram(){
   do
     detect_ip ${line}
     d=$?
-    if [ $d eq 4 ]; then
+    if [ $d -eq 4 ]; then
       #echo "为合法IPV4格式，进行处理" >> $LOG_FILE
       echo ${line} >> $cidrfile
-    elif [ $d eq 6 ]; then
+    elif [ $d -eq 6 ]; then
       #echo "为合法IPV6格式，进行处理" >> $LOG_FILE
       continue
     fi
