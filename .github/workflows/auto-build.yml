@@ -26,9 +26,22 @@ jobs:
       - name: build gfwlist
         run: |
           sh gfwlist2dnsmasq.sh gen
+          ls -lah /home/runner/work/publish/
           
       # Runs a set of commands using the runners shell
       - name: build ipcidr
         run: |
           sh ip4cidr2ipset.sh
-          cat /home/runner/work/publish/ip-cidr.ipset
+          ls -lah /home/runner/work/publish/
+          
+      - name: git push
+        run: |
+          cd /home/runner/work/publish/ || exit 1
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b hidden
+          git add .
+          git commit -m "release"
+          git remote add publish "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/gfwlist2dnsmasq.git"
+          git push -f hidden hidden
