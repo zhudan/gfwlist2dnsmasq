@@ -1,3 +1,2 @@
-# gfwlist2dnsmasq
-将gfwslist转换成dnsmasq规则的脚本
-适合OpenWrt使用的
+# DNS分流，支持clash
+
