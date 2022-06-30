@@ -12,7 +12,7 @@ MYDNSPORT=${3:-23453}
 IPSETNAME=${4:-dnsmasq_gfw}
 
 # GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt"
-GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
+GFWURL="https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
 GFWLIST_TMP_BASE64="/tmp/gfwlist.txt.base64"
 GFWLIST_TMP="/home/runner/work/publish/gfw.conf"
 # DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
