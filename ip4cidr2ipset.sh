@@ -1,3 +1,5 @@
+#!/bin/sh
+
 cidrfile="/home/runner/work/publish/ip-cidr.ipset"
 
 
