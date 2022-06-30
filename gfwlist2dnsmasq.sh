@@ -71,6 +71,9 @@ del(){
 	rm -rf $GFWLIST_TMP;
 }
 
+pwd
+echo #################
+ls -lah
 command=$1
 case $command in
 	(gen)
