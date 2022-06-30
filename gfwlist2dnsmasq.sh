@@ -8,7 +8,7 @@
 #
 
 MYDNSIP=${2:-127.0.0.1}
-MYDNSPORT=${3:-23453}
+MYDNSPORT=${3:-23457}
 IPSETNAME=${4:-dnsmasq_gfw}
 
 # GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt"
