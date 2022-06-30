@@ -23,6 +23,12 @@ jobs:
         run: mkdir /home/runner/work/publish
 
       # Runs a set of commands using the runners shell
-      - name: build gfwlist2dnsmasq
+      - name: build gfwlist
         run: |
           sh gfwlist2dnsmasq.sh gen
+          
+      # Runs a set of commands using the runners shell
+      - name: build ipcidr
+        run: |
+          sh ip4cidr2ipset.sh
+          cat /home/runner/work/publish/ip-cidr.ipset
