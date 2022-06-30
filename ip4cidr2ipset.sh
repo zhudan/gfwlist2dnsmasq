@@ -5,7 +5,7 @@ cidrfile="/home/runner/work/publish/ip-cidr.ipset"
 
 #开始添加需要走代理的ip-cidr
 add_telegram(){
-  echo 开始添加需要走代理的ip-cidr
+  echo 开始添加telegram ip-cidr
   curl -s -k -o /home/runner/work/publish/telegramcidr.txt https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt
   sed -i "s/payload://g;s/  - //g;s/'//g;/^\s*$/d" /home/runner/work/publish/telegramcidr.txt
   lines=$(cat /home/runner/work/publish/telegramcidr.txt | awk '{print $0}')
