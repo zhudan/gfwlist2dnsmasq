@@ -2,7 +2,7 @@
 
 cidrfile="/home/runner/work/publish/ip-cidr.ipset"
 
-echo "create ad hash:net family inet hashsize 1024 maxelem 65536" > $cidrfile
+echo "create gfw_cidr hash:net family inet hashsize 1024 maxelem 65536" > $cidrfile
 
 #开始添加需要走代理的ip-cidr
 add_telegram(){
