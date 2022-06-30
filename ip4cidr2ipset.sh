@@ -2,6 +2,7 @@
 
 cidrfile="/home/runner/work/publish/ip-cidr.ipset"
 
+echo "create ad hash:net family inet hashsize 1024 maxelem 65536" > $cidrfile
 
 #开始添加需要走代理的ip-cidr
 add_telegram(){
@@ -15,7 +16,7 @@ add_telegram(){
     d=$?
     if [ $d -eq 4 ]; then
       #echo "为合法IPV4格式，进行处理" >> $LOG_FILE
-      echo ${line} >> $cidrfile
+      echo add ad ${line} >> $cidrfile
     elif [ $d -eq 6 ]; then
       #echo "为合法IPV6格式，进行处理" >> $LOG_FILE
       continue
