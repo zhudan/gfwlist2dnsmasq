@@ -32,5 +32,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
+          ls -lah
+          echo #############
+          pwd
           curl -s "https://raw.githubusercontent.com/zhudan/gfwlist2dnsmasq/master/gfwlist2dnsmasq.sh" -m 10 --connect-timeout 10 | bash -s gen 127.0.0.1 23453 gfwlist
-          cat /tmp/gfw.conf
