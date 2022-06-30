@@ -6,18 +6,16 @@
 # Created Time: 2016.12.06 zhangzf
 # Translate the gfwlist in base64 to dnsmasq rules with ipset
 #
-alias echo_date='echo 【$(date +%Y年%m月%d日\ %X)】:'
-LOG_FILE=/tmp/upload/merlinclash_log.txt
 
-MYDNSIP=$2
-MYDNSPORT=$3
-IPSETNAME=$4
+MYDNSIP=${2:-127.0.0.1}
+MYDNSPORT=${3:-23453}
+IPSETNAME=${4:-dnsmasq_gfw}
 
 # GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt"
 GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
 GFWLIST_TMP_BASE64="/tmp/gfwlist.txt.base64"
 GFWLIST_TMP="/tmp/gfw.conf"
-DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
+# DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
 
 # curl & base64 command path
 CURL=$(which curl)
@@ -36,12 +34,12 @@ EOF
 }
 
 gen(){
-	echo_date "开始下载GFW规则，过程可能较慢，请耐心等待" >> $LOG_FILE
+	echo_date "开始下载GFW规则，过程可能较慢，请耐心等待"
 	# download
 	if [ ! -f $GFWLIST_TMP_BASE64 ]; then
 		$CURL $CURLOPT $GFWURL
 		[ "$?" -eq 0 ] || {
-			echo_date "Gfwlist download failed." >> $LOG_FILE
+			echo_date "Gfwlist download failed."
 			exit 1
 		}
 	fi
@@ -64,14 +62,12 @@ gen(){
 		| c_conf
 
 	rm $GFWLIST_TMP_BASE64 -f
-	echo_date "更新GFW规则完毕" >> $LOG_FILE
-	ln -snf $GFWLIST_TMP $DNSMASQ_GFW
-	echo_date "GFW规则已建立到dnsmasq配置文件夹的软链，等待重启dnsmasq即可使用dnsmasq转发GFW域名到指定DNS" >> $LOG_FILE
+	echo "更新GFW规则完毕"
 }
 
 #删除dns
 del(){
-	rm -rf $DNSMASQ_GFW
+	#rm -rf $DNSMASQ_GFW
 	rm -rf $GFWLIST_TMP;
 }
 
@@ -84,6 +80,6 @@ case $command in
 		del
 		;;
 	(*)
-		echo_date "暂不支持该命令${command}，只支持gen、del" >> $LOG_FILE
+		echo "暂不支持该命令${command}，只支持gen、del"
 		;;
 esac
