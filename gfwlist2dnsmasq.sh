@@ -39,7 +39,7 @@ gen(){
 	if [ ! -f $GFWLIST_TMP_BASE64 ]; then
 		$CURL $CURLOPT $GFWURL
 		[ "$?" -eq 0 ] || {
-			echo_date "Gfwlist download failed."
+			echo "Gfwlist download failed."
 			exit 1
 		}
 	fi
