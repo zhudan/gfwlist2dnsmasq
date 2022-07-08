@@ -62,7 +62,7 @@ gen(){
 		| sort -u \
 		| c_conf
 		
-	rows=$(grep ipset -c "$IPSETNAME" $GFWLIST_TMP)
+	rows=$(grep -c "$IPSETNAME" $GFWLIST_TMP)
 	sed -i "1iRows:${rows}" $GFWLIST_TMP
 	rm $GFWLIST_TMP_BASE64 -f
 	echo "更新GFW规则完毕"
