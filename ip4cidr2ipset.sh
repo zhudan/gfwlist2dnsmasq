@@ -1,8 +1,9 @@
 #!/bin/sh
 
 cidrfile="/home/runner/work/publish/ip-cidr.ipset"
-
-echo "create gfw_cidr hash:net family inet hashsize 1024 maxelem 65536" > $cidrfile
+IPSETNAME="gfw_cidr"
+echo "# Updated on $(date '+%F %T')" >$cidrfile
+echo "create $IPSETNAME hash:net family inet hashsize 1024 maxelem 65536" >> $cidrfile
 
 #开始添加需要走代理的ip-cidr
 add_telegram(){
@@ -16,7 +17,7 @@ add_telegram(){
     d=$?
     if [ $d -eq 4 ]; then
       #echo "为合法IPV4格式，进行处理" >> $LOG_FILE
-      echo add gfw_cidr ${line} >> $cidrfile
+      echo add $IPSETNAME ${line} >> $cidrfile
     elif [ $d -eq 6 ]; then
       #echo "为合法IPV6格式，进行处理" >> $LOG_FILE
       continue
@@ -42,3 +43,5 @@ detect_ip(){
 }
 
 add_telegram
+rows=$(grep -c "$IPSETNAME" $cidrfile)
+sed -i "1iRows:${rows}" $cidrfile
