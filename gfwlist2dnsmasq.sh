@@ -29,9 +29,7 @@ c_conf() {
 	$(while read LINE; do \
 		printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
  		printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
-	done)
-	rows=$(grep ipset -c "$IPSETNAME" $GFWLIST_TMP)
-	sed -i '1iRows:$rows' a.txt 
+	done) 
 
 EOF
 }
@@ -63,7 +61,9 @@ gen(){
 		| grep -e '\.' \
 		| sort -u \
 		| c_conf
-
+		
+	rows=$(grep ipset -c "$IPSETNAME" $GFWLIST_TMP)
+	sed -i '1iRows:$rows' $GFWLIST_TMP
 	rm $GFWLIST_TMP_BASE64 -f
 	echo "更新GFW规则完毕"
 }
