@@ -30,6 +30,9 @@ c_conf() {
 		printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
  		printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
 	done)
+	rows=$(grep ipset -c "$IPSETNAME" $GFWLIST_TMP)
+	sed -i '1iRows:$rows' a.txt 
+
 EOF
 }
 
