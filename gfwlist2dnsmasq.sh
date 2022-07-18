@@ -27,11 +27,17 @@ c_conf() {
 	
 	cat <<-EOF >>$GFWLIST_TMP
 	$(while read LINE; do \
-		printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
- 		printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
+		if [ -z "$(filter $LINE)" ]; then\
+      			printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
+ 			printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
+  		fi\
 	done) 
 
 EOF
+}
+
+filter(){
+	echo "$(echo "ns1.asuscomm.com" |grep -E ".asuscomm.com|.asus.com")"
 }
 
 gen(){
