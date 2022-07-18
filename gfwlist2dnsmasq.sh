@@ -35,7 +35,7 @@ c_conf() {
 
 filter(){
 	rule="$1"
-	echo "$(echo "$rule" | grep -Ec "\.asuscomm\.com|\.asus\.com")"
+	echo "$(echo "$rule" | grep -Ec "asuscomm\.com|asus\.com")"
 }
 
 gen(){
