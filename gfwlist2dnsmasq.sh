@@ -26,7 +26,7 @@ c_conf() {
 	echo "# Updated on $(date '+%F %T')" > $GFWLIST_TMP
 	
 	while read LINE; do 
-		if [ -z "$(filter "$LINE")" ]; then
+		if [ "$(filter "$LINE")" -eq "0" ]; then
       			printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT >> $GFWLIST_TMP
  			printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME >> $GFWLIST_TMP
   		fi
@@ -35,7 +35,7 @@ c_conf() {
 
 filter(){
 	rule="$1"
-	echo "$(echo "$rule" | grep -E ".asuscomm.com|.asus.com")"
+	echo "$(echo "$rule" | grep -Ec "\.asuscomm\.com|\.asus\.com")"
 }
 
 gen(){
