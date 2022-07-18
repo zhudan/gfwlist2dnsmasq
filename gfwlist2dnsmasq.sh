@@ -37,7 +37,7 @@ EOF
 }
 
 filter(){
-	echo "$(echo "ns1.asuscomm.com" |grep -E ".asuscomm.com|.asus.com")"
+	echo "$(echo "$1" |grep -E ".asuscomm.com|.asus.com")"
 }
 
 gen(){
