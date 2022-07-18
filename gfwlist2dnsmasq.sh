@@ -37,7 +37,8 @@ EOF
 }
 
 filter(){
-	echo "$(echo "$1" |grep -E ".asuscomm.com|.asus.com")"
+	rule=$1
+	echo "$(echo "$rule" |grep -E ".asuscomm.com|.asus.com")"
 }
 
 gen(){
