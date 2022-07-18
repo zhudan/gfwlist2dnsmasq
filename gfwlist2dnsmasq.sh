@@ -23,15 +23,14 @@ CURLOPT="-s -k -o $GFWLIST_TMP_BASE64"
 # BASE64=$(which base64)
 
 c_conf() {
-	echo "# Updated on $(date '+%F %T')" >$GFWLIST_TMP
+	echo "# Updated on $(date '+%F %T')" > $GFWLIST_TMP
 	
-	cat <<-EOF >>$GFWLIST_TMP
-	$(while read LINE; do \
-		if [ -z "$(filter $LINE)" ]; then\
-      			printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT; \
- 			printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME; \
-  		fi\
-	done) 
+	while read LINE; do 
+		if [ -z "$(filter $LINE)" ]; then
+      			printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT >> $GFWLIST_TMP
+ 			printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME >> $GFWLIST_TMP
+  		fi
+	done
 
 EOF
 }
