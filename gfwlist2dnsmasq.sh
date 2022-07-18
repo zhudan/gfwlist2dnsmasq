@@ -33,6 +33,7 @@ c_conf() {
 	done
 }
 
+#排除某些规则
 filter(){
 	rule="$1"
 	echo "$(echo "$rule" | grep -Ec "asuscomm\.com|asus\.com")"
@@ -70,7 +71,6 @@ gen(){
 	sed -i "1i# Rows:${rows}" $GFWLIST_TMP
 	rm $GFWLIST_TMP_BASE64 -f
 	echo "更新GFW规则完毕"
-	cat $GFWLIST_TMP |grep asus
 }
 
 #删除dns
