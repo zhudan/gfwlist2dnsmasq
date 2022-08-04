@@ -28,6 +28,7 @@ jobs:
       - name: build gfwlist
         run: |
           sh gfwlist2dnsmasq_lite.sh gen
+          sh gfwlist2dnsmasq.sh gen
           ls -lah /home/runner/work/publish/
           
       # Runs a set of commands using the runners shell
