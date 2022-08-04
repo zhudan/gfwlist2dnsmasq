@@ -37,6 +37,10 @@ filter(){
 	echo "$(echo "$rule" | grep -Ec "asuscomm\.com|asus\.com")"
 }
 
+addDomain(){
+	echo "fast.com" >> $GFW_TMP
+}
+
 gen(){
 	echo "开始下载GFW规则，过程可能较慢，请耐心等待"
 	# download
@@ -47,6 +51,7 @@ gen(){
 			exit 1
 		}
 	fi
+	addDomain
 	# parse gfwlist	
 	cat $GFW_TMP \
 		| grep -v \
