@@ -22,7 +22,7 @@ CURLOPT="-s -k -o $GFWLIST_TMP_BASE64"
 # BASE64=$(which base64)
 
 c_conf() {
-	echo "# Updated on $(date '+%F %T')" > $GFWLIST_TMP
+	echo "# Updated on:$(date '+%F %T')" > $GFWLIST_TMP
 	
 	while read LINE; do 
 		if [ "$(filter "$LINE")" -eq "0" ]; then
