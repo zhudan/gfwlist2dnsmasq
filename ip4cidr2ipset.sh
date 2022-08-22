@@ -2,7 +2,7 @@
 
 cidrfile="/home/runner/work/publish/ip-cidr.ipset"
 IPSETNAME="gfw_cidr"
-echo "# Updated on $(date '+%F %T')" >$cidrfile
+echo "# Updated on:$(date '+%F %T')" >$cidrfile
 echo "create $IPSETNAME hash:net family inet hashsize 1024 maxelem 65536" >> $cidrfile
 
 #开始添加需要走代理的ip-cidr
