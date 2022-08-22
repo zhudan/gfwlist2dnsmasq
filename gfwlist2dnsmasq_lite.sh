@@ -21,7 +21,7 @@ CURL=$(which curl)
 CURLOPT="-s -k -o $GFW_TMP"
 
 c_conf() {
-	echo "# Updated on $(date '+%F %T')" > $GFWLIST_TMP
+	echo "# Updated on:$(date '+%F %T')" > $GFWLIST_TMP
 	
 	while read LINE; do 
 		if [ "$(filter "$LINE")" -eq "0" ]; then
