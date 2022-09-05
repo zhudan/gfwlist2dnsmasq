@@ -11,7 +11,8 @@ MYDNSIP=${2:-127.0.0.1}
 MYDNSPORT=${3:-23453}
 IPSETNAME=${4:-dnsmasq_gfw}
 
-GFWURL="https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt"
+#GFWURL="https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt"
+GFWURL="https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2dnsmasq/blacklist_lite.conf"
 GFW_TMP="/tmp/gfw.txt"
 GFWLIST_TMP="/home/runner/work/publish/gfw.conf"
 # DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
@@ -51,7 +52,7 @@ gen(){
 			exit 1
 		}
 	fi
-	addDomain
+	# addDomain
 	# parse gfwlist	
 	cat $GFW_TMP \
 		| grep -v \
