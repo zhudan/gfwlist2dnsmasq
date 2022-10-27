@@ -16,7 +16,7 @@ IPSETNAME=${4:-dnsmasq_gfw}
 GFWURL="https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
 
 GFW_TMP="/tmp/gfw.txt"
-GFWLIST_TMP="/home/runner/work/publish/gfw.conf"
+GFWLIST_TMP="/home/runner/work/publish/gfw_lite.conf"
 # DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
 
 # curl & base64 command path
