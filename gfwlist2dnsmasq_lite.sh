@@ -37,7 +37,7 @@ c_conf() {
 #排除某些规则
 filter(){
 	rule="$1"
-	echo "$(echo "$rule" | grep -Ec "asuscomm\.com|asus\.com|dns\.google")"
+	echo "$(echo "$rule" | grep -Ec "asuscomm\.com|asus\.com|dns\.google|m-team\.cc")"
 }
 
 addDomain(){
