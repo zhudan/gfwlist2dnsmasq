@@ -45,3 +45,4 @@ detect_ip(){
 add_telegram
 rows=$(grep -c "add $IPSETNAME" $cidrfile)
 sed -i "1i# Rows:${rows}" $cidrfile
+
