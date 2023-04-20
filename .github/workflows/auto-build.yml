@@ -57,17 +57,16 @@ jobs:
           git push -f hidden hidden
           
       - name: create new tag
-        uses: rickstaa/action-create-tag@v1
-        id: "tag_create"
-        with:
-          tag: ${{ steps.date.outputs.datetime }}
-          tag_exists_error: false
-          message: ${{ steps.date.outputs.datetime }}
+        id: tag
+        uses: anothrNick/github-tag-action@1.34.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CUSTOM_TAG: ${{ steps.date.outputs.datetime }}
           
       - name: Upload Release
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
         with:
-          tag: 'refs/tags/${{ steps.date.outputs.datetime }}'
+          tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
           files: /home/runner/work/publish/*
           generate_release_notes: true
