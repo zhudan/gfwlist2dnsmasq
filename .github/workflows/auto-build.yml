@@ -56,6 +56,14 @@ jobs:
           git remote add hidden "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f hidden hidden
           
+      - name: create new tag
+        uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: ${{ steps.date.outputs.datetime }}
+          tag_exists_error: false
+          message: ${{ steps.date.outputs.datetime }}
+          
       - name: Upload Release
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
