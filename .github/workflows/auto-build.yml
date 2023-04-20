@@ -59,18 +59,18 @@ jobs:
           git remote add hidden "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f hidden hidden
           
-      - name: create new tag
-        id: tag
-        uses: anothrNick/github-tag-action@1.61.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_TAG: ${{ steps.date.outputs.datetime }}
+#       - name: create new tag
+#         id: tag
+#         uses: anothrNick/github-tag-action@1.61.0
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           CUSTOM_TAG: ${{ steps.date.outputs.datetime }}
           
-      - name: Upload Release
-        uses: ncipollo/release-action@v1
-        if: ${{ success() }}
-        with:
-          tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
-          name: ${{ steps.date.outputs.datetime }}
-          makeLatest: true
-          artifacts: /home/runner/work/publish/*
+#       - name: Upload Release
+#         uses: ncipollo/release-action@v1
+#         if: ${{ success() }}
+#         with:
+#           tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
+#           name: ${{ steps.date.outputs.datetime }}
+#           makeLatest: true
+#           artifacts: /home/runner/work/publish/*
