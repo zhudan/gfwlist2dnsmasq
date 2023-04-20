@@ -22,7 +22,11 @@ jobs:
       
       - name: Set time zone
         run: sudo timedatectl set-timezone 'Asia/Shanghai'
-
+        
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=datetime::$(date +'%Y-%m-%d-%H-%M-%S')"
+        
       # Runs a single command using the runners shell
       - name: make publish dir
         run: mkdir /home/runner/work/publish
@@ -51,3 +55,11 @@ jobs:
           git commit -m "release"
           git remote add hidden "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f hidden hidden
+          
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        if: ${{ success() }}
+        with:
+          tag: ${{ steps.date.outputs.datetime }}
+          files: /home/runner/work/publish/*
+          generate_release_notes: true
