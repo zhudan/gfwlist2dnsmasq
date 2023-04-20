@@ -32,7 +32,9 @@ jobs:
         run: mkdir /home/runner/work/publish
         
       - name: Copy dnsmasq config
-        run: cp dnsmasq_clash.ini /home/runner/work/publish/ 
+        run: |
+          cp dnsmasq_clash.ini /home/runner/work/publish/
+          curl https://cdn.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/dnsmasq_clash.ini
 
       # Runs a set of commands using the runners shell
       - name: build gfwlist
@@ -40,11 +42,15 @@ jobs:
           date '+%F %T'
           sh gfwlist2dnsmasq_lite.sh gen
           sh gfwlist2dnsmasq.sh gen
+          curl https://cdn.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/gfw_lite.conf
+          curl https://cdn.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/gfw.conf
           
       # Runs a set of commands using the runners shell
       - name: build ipcidr
         run: |
           sh ip4cidr2ipset.sh
+          curl https://cdn.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/ip-cidr.ipset
+          curl https://cdn.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/telegramcidr.txt
           ls -lah /home/runner/work/publish/
           
       - name: git push
