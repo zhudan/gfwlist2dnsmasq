@@ -71,4 +71,5 @@ jobs:
         if: ${{ success() }}
         with:
           tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
+          makeLatest: true
           artifacts: /home/runner/work/publish/*
