@@ -72,4 +72,3 @@ jobs:
         with:
           tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
           artifacts: /home/runner/work/publish/*
-          draft: true
