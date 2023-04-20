@@ -68,6 +68,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: ${{ success() }}
         with:
-          tag: '${{ steps.date.outputs.datetime }}'
+          tag: 'refs/tags/${{ steps.date.outputs.datetime }}'
           files: /home/runner/work/publish/*
           generate_release_notes: true
