@@ -64,9 +64,9 @@ jobs:
           CUSTOM_TAG: ${{ steps.date.outputs.datetime }}
           
       - name: Upload Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         if: ${{ success() }}
         with:
           tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
-          files: /home/runner/work/publish/*
-          generate_release_notes: true
+          artifacts: /home/runner/work/publish/*
+          draft: true
