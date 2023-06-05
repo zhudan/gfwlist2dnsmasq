@@ -54,7 +54,7 @@ gen(){
 			exit 1
 		}
 	fi
-	# addDomain
+	addDomain
 	# parse gfwlist	
 	cat $GFW_TMP \
 		| grep -v \
