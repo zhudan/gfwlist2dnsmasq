@@ -41,7 +41,7 @@ filter(){
 }
 
 addDomain(){
-	echo "fast.com\nfakeopen.com\nasusrouter.com\nasusrepeater.com\nasusap.com\nasusswitch.com\nrouter.asus.com\nasusnetwork.net" >> $GFW_TMP
+	echo "fast.com\nfakeopen.com" >> $GFW_TMP
 }
 
 gen(){
