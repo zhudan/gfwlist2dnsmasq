@@ -41,7 +41,7 @@ filter(){
 }
 
 addDomain(){
-	echo "fast.com\nfakeopen.com\nrclone.org" >> $GFW_TMP
+	echo "fast.com\nfakeopen.com\nrclone.org\ncloudflare.com" >> $GFW_TMP
 }
 
 gen(){
