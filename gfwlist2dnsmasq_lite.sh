@@ -80,6 +80,7 @@ gen(){
 			-e s'/^\.//'g 2>/dev/null \
 		| grep -e '\.' \
 		| sort -u \
+                | uniq \
 		| c_conf
 		
 	rows=$(grep -c "$IPSETNAME" $GFWLIST_TMP)
