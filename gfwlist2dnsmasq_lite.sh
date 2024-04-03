@@ -53,7 +53,7 @@ gen(){
         fi
           # 下载每个URL的内容并追加到文件
         curl "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt" >> "$GFW_TMP"
-        
+        curl "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Copilot/Copilot.list" >> "$GFW_TMP"
         echo "下载完成，所有内容已合并到 $output_file"
 	addDomain
 	# parse gfwlist	
