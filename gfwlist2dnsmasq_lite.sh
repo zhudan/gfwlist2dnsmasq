@@ -15,13 +15,6 @@ GFWURL="https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/g
 #GFWURL="https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_lite.txt"
 #GFWURL="https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
 
-#!/bin/bash
-
-# 定义URL数组
-urls=(
-  "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt"
-)
-
 GFW_TMP="/tmp/gfw.txt"
 GFWLIST_TMP="/home/runner/work/publish/gfw_lite.conf"
 # DNSMASQ_GFW="/jffs/configs/dnsmasq.d/gfw.conf"
@@ -58,11 +51,9 @@ gen(){
         if [ -f "$GFW_TMP" ]; then
           rm "$GFW_TMP"
         fi
-        # 循环遍历URL数组
-        for url in "${urls[@]}"; do
           # 下载每个URL的内容并追加到文件
-          curl "$url" >> "$GFW_TMP"
-        done
+        curl "https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt" >> "$GFW_TMP"
+        
         echo "下载完成，所有内容已合并到 $output_file"
 	addDomain
 	# parse gfwlist	
