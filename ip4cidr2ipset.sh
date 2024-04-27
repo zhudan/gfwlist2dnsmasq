@@ -8,7 +8,7 @@ echo "create $IPSETNAME hash:net family inet hashsize 1024 maxelem 65536" >> $ci
 #开始添加需要走代理的ip-cidr
 add_telegram(){
   echo 开始添加telegram ip-cidr
-  curl -s -k -o /home/runner/work/publish/telegramcidr.txt https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt
+  curl -s -k -o /home/runner/work/publish/telegramcidr.txt https://core.telegram.org/resources/cidr.txt
   sed -i "s/payload://g;s/  - //g;s/'//g;/^\s*$/d" /home/runner/work/publish/telegramcidr.txt
   lines=$(cat /home/runner/work/publish/telegramcidr.txt | awk '{print $0}')
   for line in $lines
