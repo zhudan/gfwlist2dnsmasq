@@ -41,7 +41,7 @@ filter(){
 }
 
 addDomain(){
-	echo "fast.com\nsydney.bing.com\nrclone.org\nspeed.cloudflare.com\ndocker.com\ndocker.io" >> $GFW_TMP
+	echo "fast.com\nsydney.bing.com\nrclone.org\nspeed.cloudflare.com\ndocker.com\ndocker.io\nomdbapi.com" >> $GFW_TMP
 }
 
 gen(){
