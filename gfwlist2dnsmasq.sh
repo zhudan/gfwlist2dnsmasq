@@ -10,6 +10,7 @@
 MYDNSIP=${2:-127.0.0.1}
 MYDNSPORT=${3:-23453}
 IPSETNAME=${4:-dnsmasq_gfw}
+IPSETNAME6=${5:-dnsmasq_gfw6}
 
 # GFWURL="https://ghproxy.com/https://raw.githubusercontent.com/Loukky/gfwlist-by-loukky/master/gfwlist.txt"
 GFWURL="https://raw.githubusercontent.com/hezhijie0327/GFWList2AGH/main/gfwlist2domain/blacklist_full.txt"
@@ -27,7 +28,7 @@ c_conf() {
 	while read LINE; do 
 		if [ "$(filter "$LINE")" -eq "0" ]; then
       			printf 'server=/.%s/%s#%s\n' $LINE $MYDNSIP $MYDNSPORT >> $GFWLIST_TMP
- 			printf 'ipset=/.%s/%s\n' $LINE $IPSETNAME >> $GFWLIST_TMP
+ 			printf 'ipset=/.%s/%s,%s\n' $LINE $IPSETNAME $IPSETNAME6 >> $GFWLIST_TMP
   		fi
 	done
 }
