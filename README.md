@@ -1,1 +1,1 @@
-# DNS分流，支持clash
+# Dnsmasq域名分流规则

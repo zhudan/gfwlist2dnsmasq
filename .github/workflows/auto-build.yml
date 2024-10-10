@@ -57,26 +57,16 @@ jobs:
         run: |
           cd /home/runner/work/publish/ || exit 1
           git init
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name suzukua_bot
+          git config user.email suzukua_bot
           git checkout -b hidden
           git add .
-          git commit -m "release"
+          git commit -m "Automated build"
           git remote add hidden "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f hidden hidden
-          
-#       - name: create new tag
-#         id: tag
-#         uses: anothrNick/github-tag-action@1.61.0
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           CUSTOM_TAG: ${{ steps.date.outputs.datetime }}
-          
-#       - name: Upload Release
-#         uses: ncipollo/release-action@v1
-#         if: ${{ success() }}
-#         with:
-#           tag: 'refs/tags/${{ steps.tag.outputs.tag }}'
-#           name: ${{ steps.date.outputs.datetime }}
-#           makeLatest: true
-#           artifacts: /home/runner/work/publish/*
+           
+
+      - name: push to Gitlab
+        run: |
+          cd /home/runner/work/publish/ || exit 1
+          git push https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.com/suzukua/gfwlist2dnsmasq.git HEAD:main
