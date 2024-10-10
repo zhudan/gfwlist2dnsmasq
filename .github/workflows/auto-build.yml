@@ -60,4 +60,4 @@ jobs:
       - name: push to Gitlab
         run: |
           cd /home/runner/work/publish/ || exit 1
-          git push https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.com/suzukua/gfwlist2dnsmasq.git HEAD:main
+          git push -f https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.com/suzukua/gfwlist2dnsmasq.git HEAD:main
