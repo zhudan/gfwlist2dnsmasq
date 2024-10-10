@@ -18,7 +18,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Set time zone
         run: sudo timedatectl set-timezone 'Asia/Shanghai'
@@ -30,11 +30,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: make publish dir
         run: mkdir /home/runner/work/publish
-        
-      - name: Copy dnsmasq config
-        run: |
-          cp dnsmasq_clash.ini /home/runner/work/publish/
-          curl https://purge.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/dnsmasq_clash.ini
 
       # Runs a set of commands using the runners shell
       - name: build gfwlist
@@ -42,15 +37,11 @@ jobs:
           date '+%F %T'
           sh gfwlist2dnsmasq_lite.sh gen
           sh gfwlist2dnsmasq.sh gen
-          curl https://purge.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/gfw_lite.conf
-          curl https://purge.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/gfw.conf
-          
+
       # Runs a set of commands using the runners shell
       - name: build ipcidr
         run: |
           sh ip4cidr2ipset.sh
-          curl https://purge.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/ip-cidr.ipset
-          curl https://purge.jsdelivr.net/gh/zhudan/gfwlist2dnsmasq@hidden/telegramcidr.txt
           ls -lah /home/runner/work/publish/
           
       - name: git push
