@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Update Time 2021.11.29 zhudan
+# Update Time 2021.11.29 suzukua
 # rm ipset too support clash dns
 #
 # Created Time: 2016.12.06 zhangzf
